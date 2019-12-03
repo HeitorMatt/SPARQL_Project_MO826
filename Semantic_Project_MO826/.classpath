@@ -40,5 +40,6 @@
 	<classpathentry kind="lib" path="D:/Program Files (x86)/Documentos/Facul/Mestrado/Jena Apache/MO826-Jena-Tutorial-1/SPARQL_Project_MO826/Semantic_Project_MO826/apache-jena-3.13.1/lib/log4j-1.2.17.jar"/>
 	<classpathentry kind="lib" path="D:/Program Files (x86)/Documentos/Facul/Mestrado/Jena Apache/MO826-Jena-Tutorial-1/SPARQL_Project_MO826/Semantic_Project_MO826/apache-jena-3.13.1/lib/slf4j-api-1.7.26.jar"/>
 	<classpathentry kind="lib" path="D:/Program Files (x86)/Documentos/Facul/Mestrado/Jena Apache/MO826-Jena-Tutorial-1/SPARQL_Project_MO826/Semantic_Project_MO826/apache-jena-3.13.1/lib/slf4j-log4j12-1.7.26.jar"/>
+	<classpathentry kind="lib" path="D:/Program Files (x86)/Documentos/Facul/Mestrado/Jena Apache/MO826-Jena-Tutorial-1/SPARQL_Project_MO826/Semantic_Project_MO826/json-20190722.jar"/>
 	<classpathentry kind="output" path="bin"/>
 </classpath>
