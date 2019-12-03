@@ -6,7 +6,7 @@ import org.apache.jena.query.*;
 import org.apache.jena.rdf.model.Model;
 import org.apache.jena.sparql.engine.http.QueryEngineHTTP;
 
-import org.json.*;
+
 
 public class Dbpedia_querier {
 	static public void main(String...argv) {
@@ -39,7 +39,7 @@ public class Dbpedia_querier {
         		+ "MINUS{?subject rdfs:label 'Queen (band)' @en}}"
         		+ " LIMIT 100";
 		
-		String queryPinkFloid = "PREFIX owl: <http://www.w3.org/2002/07/owl#>\r\n" + 
+		String queryPinkFloyd = "PREFIX owl: <http://www.w3.org/2002/07/owl#>\r\n" + 
         		"PREFIX xsd: <http://www.w3.org/2001/XMLSchema#>\r\n" + 
         		"PREFIX dbo: <http://dbpedia.org/ontology/>\r\n"+
         		"PREFIX rdfs: <http://www.w3.org/2000/01/rdf-schema#>\r\n" + 
@@ -69,7 +69,7 @@ public class Dbpedia_querier {
         		+ "}"
         		+ " LIMIT 200";
 		
-        Query query = QueryFactory.create(queryPinkFloid);
+        Query query = QueryFactory.create(queryPinkFloyd);
 
         // Remote execution.
         try ( QueryExecution qexec = QueryExecutionFactory.sparqlService("http://dbpedia.org/sparql", query) ) {
