@@ -39,7 +39,7 @@ public class Dbpedia_querier {
         		+ "MINUS{?subject rdfs:label 'Queen (band)' @en}}"
         		+ " LIMIT 100";
 		
-		String queryQueenSubject_Specific = "PREFIX owl: <http://www.w3.org/2002/07/owl#>\r\n" + 
+		String queryPinkFloid = "PREFIX owl: <http://www.w3.org/2002/07/owl#>\r\n" + 
         		"PREFIX xsd: <http://www.w3.org/2001/XMLSchema#>\r\n" + 
         		"PREFIX dbo: <http://dbpedia.org/ontology/>\r\n"+
         		"PREFIX rdfs: <http://www.w3.org/2000/01/rdf-schema#>\r\n" + 
@@ -54,44 +54,30 @@ public class Dbpedia_querier {
         		
         		+ "SELECT DISTINCT ?album ?recommended\r\n" + 
         		"WHERE {{\r\n" + 
-        		"?album a dbo:Album; "
-        		+ "a dbo:MusicalWork;"
-        		+ "dbp:thisAlbum ?albumName;"
+        		"?album a dbo:Single; "
+        		+ "rdfs:label ?albumName;"
         		+ "dbo:artist ?band."
         		+ "?band a dbo:Band;"
-        		+ "rdfs:label 'Queen (band)'@en;"
+        		+ "rdfs:label 'Pink Floyd'@en;"
         		+ "}"
         		+ "UNION{"
         		+ "?band a dbo:Band;"
-        		+ "rdfs:label 'Queen (band)'@en;" 
+        		+ "rdfs:label 'Pink Floyd'@en;" 
         		+ "dct:subject ?subject." 
         		+ "?recommended dct:subject ?subject;" 
         		+ "a dbo:Band;}"
         		+ "}"
-        		+ " LIMIT 100";
+        		+ " LIMIT 200";
 		
-        Query query = QueryFactory.create(queryQueenSubject_Specific);
+        Query query = QueryFactory.create(queryPinkFloid);
 
         // Remote execution.
         try ( QueryExecution qexec = QueryExecutionFactory.sparqlService("http://dbpedia.org/sparql", query) ) {
-            // Set the DBpedia specific timeout.
-            //((QueryEngineHTTP)qexec).addParam("timeout", "30000") ;
 
             // Execute.
             ResultSet rs = qexec.execSelect();
             ResultSetFormatter.out(System.out, rs);
-            //ResultSetFormatter.out(System.out, rs, query);
-            ByteArrayOutputStream outputStream = new ByteArrayOutputStream(); 
 
-//            ResultSetFormatter.outputAsJSON(outputStream, rs);
-//
-//            // and turn that into a String
-//            String srtJson = new String(outputStream.toByteArray());
-//            
-//            //System.out.println(srtJson);
-//            JSONObject objJson = new JSONObject(srtJson);
-//            System.out.println(srtJson);
-            //ResultSetFormatter.outputAsJSON(System.out, rs);
             
         } catch (Exception e) {
             e.printStackTrace();
